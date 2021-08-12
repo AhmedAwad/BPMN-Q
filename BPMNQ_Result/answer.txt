@@ -1,0 +1,22 @@
+<query-result>
+<ProcessGraph modelID="http://localhost:8080/backend/poem/model/1027/rdf" location="http://localhost:8080/backend/poem/model/1027/rdf">
+<Activity id="#oryx_76E95FEA-BB3B-4F58-8882-40E1D0D955F0" label="check documents" type2="" />
+<Activity id="#oryx_D6D05690-96D6-499F-B664-3069A4D0AE37" label="verify customer record" type2="" />
+<SequenceFlow from="ACT#oryx_76E95FEA-BB3B-4F58-8882-40E1D0D955F0" to="ACT#oryx_D6D05690-96D6-499F-B664-3069A4D0AE37"/>
+</ProcessGraph>
+<ProcessGraph modelID="http://localhost:8080/backend/poem/model/1028/rdf" location="http://localhost:8080/backend/poem/model/1028/rdf">
+<Activity id="#oryx_76E95FEA-BB3B-4F58-8882-40E1D0D955F0" label="check documents" type2="" />
+<Activity id="#oryx_D6D05690-96D6-499F-B664-3069A4D0AE37" label="verify customer record" type2="" />
+<SequenceFlow from="ACT#oryx_76E95FEA-BB3B-4F58-8882-40E1D0D955F0" to="ACT#oryx_D6D05690-96D6-499F-B664-3069A4D0AE37"/>
+</ProcessGraph>
+<ProcessGraph modelID="http://localhost:8080/backend/poem/model/2001/rdf" location="http://localhost:8080/backend/poem/model/2001/rdf">
+<Activity id="#oryx_4768A578-1225-4227-8D5C-345B80DA4AF2" label="Check legal documents" type2="" />
+<Activity id="#oryx_6F2F578C-69AF-4573-AEB4-980F98A15A72" label="create/update customer record" type2="" />
+<Gateway id="#oryx_7CC7AB17-0B77-4644-9873-D90A1EB13850" label="" type2="XOR SPLIT" />
+<Gateway id="#oryx_DAC95455-A3CF-425F-86EF-4EDCD4F9AC86" label="" type2="XOR JOIN" />
+<SequenceFlow from="ACT#oryx_4768A578-1225-4227-8D5C-345B80DA4AF2" to="ACT#oryx_6F2F578C-69AF-4573-AEB4-980F98A15A72"/>
+<SequenceFlow from="ACT#oryx_6F2F578C-69AF-4573-AEB4-980F98A15A72" to="GAT#oryx_7CC7AB17-0B77-4644-9873-D90A1EB13850"/>
+<SequenceFlow from="GAT#oryx_7CC7AB17-0B77-4644-9873-D90A1EB13850" to="GAT#oryx_DAC95455-A3CF-425F-86EF-4EDCD4F9AC86"/>
+<SequenceFlow from="GAT#oryx_DAC95455-A3CF-425F-86EF-4EDCD4F9AC86" to="ACT#oryx_4768A578-1225-4227-8D5C-345B80DA4AF2"/>
+</ProcessGraph>
+</query-result>

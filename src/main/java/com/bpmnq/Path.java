@@ -1,0 +1,178 @@
+package com.bpmnq;
+
+public final class Path extends SequenceFlow implements Cloneable
+{
+    public enum TemporalType {
+	NONE,
+	LEADS_TO,
+	PRECEDES
+    }
+    public enum PathEvaluation {
+	CYCLIC,
+	ACYCLIC,
+	SHORTEST
+    }
+    public String exclude; 
+    protected TemporalType temporalTag;
+    public String label;
+    private PathEvaluation pathEval;
+    public Path()
+    {
+	super();
+	exclude = "";
+	temporalTag = TemporalType.NONE;
+	label = "";
+	pathEval = PathEvaluation.CYCLIC;
+    }
+    
+    public Path(TemporalType temporalTag)
+    {
+	this();
+	this.temporalTag = temporalTag;
+    }
+    
+    public Object clone()
+    {
+	Path clone = (Path)super.clone();
+	clone.exclude = this.exclude;
+	clone.temporalTag = this.getTemporalTag();
+	clone.label = this.label;
+	clone.pathEval = this.pathEval;
+	return clone;
+    }
+    
+    public Path(GraphObject from, GraphObject to)
+    {
+	super(from, to);
+	exclude = "";
+	temporalTag = TemporalType.NONE;
+	label = "";
+	pathEval = PathEvaluation.CYCLIC;
+    }
+    public void setPathEvaluaiton(PathEvaluation e)
+    {
+	pathEval = e;
+    }
+    public PathEvaluation getPathEvaluation()
+    {
+	return pathEval;
+    }
+    public Path(GraphObject from, GraphObject to, String exclude)
+    {
+	this(from, to);
+	this.exclude = exclude;
+    }
+    public Path(GraphObject from, GraphObject to, String exclude,String label)
+    {
+	this(from, to);
+	this.exclude = exclude;
+	this.label = label;
+    }
+
+    public Path(GraphObject from, GraphObject to, TemporalType temporalTag)
+    {
+	this(from, to);
+	this.temporalTag = temporalTag;
+    }
+
+    public Path(GraphObject from, GraphObject to, String exclude, TemporalType temporalTag)
+    {
+	this(from, to);
+	this.exclude = exclude;
+	this.temporalTag = temporalTag;
+    }
+
+    public void setTemporalTag(TemporalType tag) {
+	temporalTag = tag;
+    }
+    
+    public TemporalType getTemporalTag() {
+	return this.temporalTag;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode()
+    {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((exclude == null) ? 0 : exclude.hashCode());
+	result = prime * result
+		+ ((temporalTag == null) ? 0 : temporalTag.hashCode());
+	return result;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+	if (this == obj)
+	    return true;
+	if (!super.equals(obj))
+	    return false;
+	if (!(obj instanceof Path))
+	    return false;
+	final Path other = (Path) obj;
+	if (exclude == null)
+	{
+	    if (other.exclude != null)
+		return false;
+	    // this update added on 19.05.2011 to solve an issue with the path index
+	} else if (!(Utilities.isSubset(this.normalizeExclude(),other.normalizeExclude()) && Utilities.isSubset(other.normalizeExclude(),this.normalizeExclude())))
+		
+//		exclude.equals(other.exclude))
+	    return false;
+	if (temporalTag == null)
+	{
+	    if (other.temporalTag != null)
+		return false;
+	} else if (!temporalTag.equals(other.temporalTag))
+	    return false;
+	return true;
+    }
+    private String normalizeExclude()
+    {
+	return this.exclude.replace("GAT", "").replace("ACT", "").replace("EVE", "");
+    }
+    public boolean hasUnresolvedExcludes()
+    {
+    	return this.exclude.contains("?");
+    }
+    public String toString()
+    {
+	StringBuffer result = new StringBuffer(50);
+	if (this.temporalTag == TemporalType.NONE)
+	    result.append("Structural ");
+	else if (this.temporalTag == TemporalType.LEADS_TO)
+	    result.append("Behavioural (LEADS TO) ");
+	else 
+	    result.append("Behavioural (PRECEDES) ");
+	result.append("path from ");
+	
+	if (this.frmActivity != null)
+	    result.append(this.frmActivity.toString()+" ");
+	else if (this.frmEvent != null)
+	    result.append(this.frmEvent.toString() +" ");
+	else
+	    result.append(this.frmGateWay.toString()+ " ");
+	
+	result.append(" to ");
+	
+	if (this.toActivity != null)
+	    result.append(this.toActivity.toString()+" ");
+	else if (this.toEvent != null)
+	    result.append(this.toEvent.toString() +" ");
+	else
+	    result.append(this.toGateWay.toString()+ " ");
+	
+	if (exclude.length() > 0)
+	    result.append(" excluding("+exclude+")");
+	
+	return result.toString();
+	
+    }
+}

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:dcTerms="http://purl.org/dc/terms/"
+  xmlns:b3mn="http://b3mn.org"
+  xmlns:oryx="http://oryx-editor.org/"
+  xmlns:raziel="http://raziel.org/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://myhpi.de/~sryll/bpmnq.xhtml">
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas">
+    <rdf:type rdf:resource="http://oryx-editor.org/canvas" />
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#BPMNQDiagram</oryx:type>
+    <oryx:language>English</oryx:language>
+    <oryx:creationdate>10/07/07</oryx:creationdate>
+    <oryx:modificationdate>10/07/07</oryx:modificationdate>
+    <oryx:mode>writable</oryx:mode>
+    <oryx:mode>fullscreen</oryx:mode>
+    <oryx:stencilset rdf:resource="http://localhost:8080/oryx/stencilsets/bpmnq/bpmnq.json" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource0" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource1" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource4" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource5" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource6" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource7" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource8" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource9" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource10" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource11" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource12" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource13" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource14" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource15" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource17" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource20" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource21" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource22" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource23" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource24" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource25" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource16" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource18" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource2" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource3" />
+    <oryx:render rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource19" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource0">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#Task</oryx:type>
+    <oryx:activitytype>Task</oryx:activitytype>
+    <oryx:looptype>None</oryx:looptype>
+    <oryx:loopcounter>1</oryx:loopcounter>
+    <oryx:loopmaximum>1</oryx:loopmaximum>
+    <oryx:testtime>After</oryx:testtime>
+    <oryx:mi_ordering>Sequential</oryx:mi_ordering>
+    <oryx:mi_flowcondition>All</oryx:mi_flowcondition>
+    <oryx:bgcolor>#ffffcc</oryx:bgcolor>
+    <oryx:bounds>138.99998474121094,133.99999618530273,238.99998474121094,213.99999618530273</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource4" />
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource6" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource1">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#Path</oryx:type>
+    <oryx:temporalproperty>None</oryx:temporalproperty>
+    <oryx:bounds>427.6033945756278,183.93018203368038,491.5312295647233,247.1653714561148</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource18" />
+    <oryx:dockers>15 15 478 201 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource4">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>239.22591383375158,173.62976266067574,401.1256486662484,179.46398733932426</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource16" />
+    <oryx:dockers>55.00001525878906 38.000003814697266 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource5">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#TextAnnotation</oryx:type>
+    <oryx:artifacttype>Annotation</oryx:artifacttype>
+    <oryx:text>Hallo!</oryx:text>
+    <oryx:bounds>202,60,302,110</oryx:bounds>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource6">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#Association_Undirected</oryx:type>
+    <oryx:direction>None</oryx:direction>
+    <oryx:bounds>189.62461052027334,110.3434439500236,218.5706895223559,133.50030293563373</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource5" />
+    <oryx:dockers>0 40 47 26  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource7">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#VariableActivity</oryx:type>
+    <oryx:name>@cancelOrder</oryx:name>
+    <oryx:activitytype>Task</oryx:activitytype>
+    <oryx:bgcolor>#ffffcc</oryx:bgcolor>
+    <oryx:bounds>158.99998474121094,255.99999618530273,316.99998474121094,334.99999618530273</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource3" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource8">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#AND_Gateway</oryx:type>
+    <oryx:gatewaytype>AND</oryx:gatewaytype>
+    <oryx:splitjoin>AND Split</oryx:splitjoin>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>360,254,390,284</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource23" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource9">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#OR_Gateway</oryx:type>
+    <oryx:gatewaytype>OR</oryx:gatewaytype>
+    <oryx:splitjoin>OR Split</oryx:splitjoin>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>360,390,390,420</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource17" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource10">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#Exclusive_Databased_Gateway</oryx:type>
+    <oryx:gatewaytype>XOR</oryx:gatewaytype>
+    <oryx:splitjoin>XOR Split</oryx:splitjoin>
+    <oryx:xortype>Data</oryx:xortype>
+    <oryx:markervisible>true</oryx:markervisible>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>431,427,461,457</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource24" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource11">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#Exclusive_Eventbased_Gateway</oryx:type>
+    <oryx:gatewaytype>XOR</oryx:gatewaytype>
+    <oryx:splitjoin>XOR Split</oryx:splitjoin>
+    <oryx:xortype>Event</oryx:xortype>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>495,360,525,390</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource25" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource12">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#StartEvent</oryx:type>
+    <oryx:eventtype>Start</oryx:eventtype>
+    <oryx:trigger>None</oryx:trigger>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>45,165,75,195</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource22" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource13">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#EndEvent</oryx:type>
+    <oryx:eventtype>End</oryx:eventtype>
+    <oryx:result>None</oryx:result>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>540,226,568,254</oryx:bounds>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource14">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#IntermediateEvent</oryx:type>
+    <oryx:eventtype>Intermediate</oryx:eventtype>
+    <oryx:trigger>None</oryx:trigger>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>208.99998474121094,375,238.99998474121094,405</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource21" />
+    <oryx:docker>223.99998474121094,390</oryx:docker>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource15">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>379.9027859155249,190.64263284101742,411.0972140844751,258.3573671589826</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource8" />
+    <oryx:dockers>15 15 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource17">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>385.316494952099,410.3762015947558,435.683505047901,436.6237984052442</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource10" />
+    <oryx:dockers>15 15 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource20">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>507.0143605578567,244.46278136608947,540.1418894421432,255.13096863391056</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource13" />
+    <oryx:dockers>15 15 14 14  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource21">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>227.74666400577777,335.9690933633157,237.7533054766441,375.2809018683127</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource7" />
+    <oryx:dockers>15 15 79 79  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource22">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>75.65289758639254,181.28493935410685,138.56585241360744,186.44943564589315</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource0" />
+    <oryx:dockers>15 15 55.00001525878906 57.000003814697266  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource23">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#NegativeSequenceFlow</oryx:type>
+    <oryx:bounds>351,280.76261273492895,371.12517892505844,393.21408589705266</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource9" />
+    <oryx:dockers>15 15 351 332 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource24">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#NegativePath</oryx:type>
+    <oryx:bounds>456.2303348461655,386.00056598830133,505.39511191187387,436.662433993305</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource11" />
+    <oryx:dockers>15 15 492 418 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource25">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#Path</oryx:type>
+    <oryx:temporalproperty>None</oryx:temporalproperty>
+    <oryx:name>path-label</oryx:name>
+    <oryx:bounds>497.5398661351382,271.69933067569093,510,359.90625</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource18" />
+    <oryx:dockers>15 15 510 334 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource16">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#genericsplit</oryx:type>
+    <oryx:gatewaytype>GENERIC SPLIT</oryx:gatewaytype>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>401,165,431,195</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource1" />
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource15" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource18">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#genericjoin</oryx:type>
+    <oryx:gatewaytype>GENERIC JOIN</oryx:gatewaytype>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>480,244,510,274</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource20" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource2">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#generic</oryx:type>
+    <oryx:gatewaytype>GENERIC</oryx:gatewaytype>
+    <oryx:bgcolor>#ffffff</oryx:bgcolor>
+    <oryx:bounds>300,198.99999618530273,330,228.99999618530273</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource19" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource3">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#NegativeSequenceFlow</oryx:type>
+    <oryx:bounds>315.99003027544705,228.2026322166841,319.5316505507924,279.32658988769157</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource2" />
+    <oryx:dockers>79 39.5 319.5316505507924 279.00950649068034 15 15  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://myhpi.de/~sryll/bpmnq.xhtml#resource19">
+    <oryx:type>http://b3mn.org/stencilset/bpmnq#SequenceFlow</oryx:type>
+    <oryx:conditiontype>None</oryx:conditiontype>
+    <oryx:quantity>1</oryx:quantity>
+    <oryx:bounds>239.52660855574345,195.7274939188842,302.15307894425655,210.88968949819764</oryx:bounds>
+    <raziel:outgoing rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#resource0" />
+    <oryx:dockers>15 15 81.00001525878906 57.000003814697266  #</oryx:dockers>
+    <raziel:parent rdf:resource="http://myhpi.de/~sryll/bpmnq.xhtml#oryxcanvas" />
+  </rdf:Description>
+</rdf:RDF>

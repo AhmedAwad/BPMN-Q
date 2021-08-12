@@ -1,0 +1,130 @@
+
+JModel
+  JPackage com.bpmnq.rdf
+    JClass Thing -> http://www.w3.org/2000/01/rdf-schema#Class
+      extends: org.ontoware.rdfreactor.schema.rdfs.Class, 
+      comment: This class acts as a catch-all for all properties, for which no domain has specified.
+      Type (-1/-1)  -> http://oryx-editor.org/type, types: 'Thing',. Inverse: Type.
+    JClass ExclusiveEventbasedGateway -> http://b3mn.org/stencilset/bpmnq#Exclusive_Eventbased_Gateway
+      extends: XORGateway, org.ontoware.rdfreactor.schema.rdfs.Resource, ExclusiveEventbasedGateway, Gateway, Node, 
+      comment: 
+    JClass XORGateway -> http://b3mn.org/stencilset/bpmnq#XOR_Gateway
+      extends: Gateway, org.ontoware.rdfreactor.schema.rdfs.Resource, XORGateway, Node, 
+      comment: Abstract superclass for data-based and event-based XOR gateway
+      Splitjoin (-1/-1)  -> http://oryx-editor.org/splitjoin, types: 'java.lang.String',. Inverse: Splitjoin.
+      Xortype (-1/-1)  -> http://oryx-editor.org/xortype, types: 'java.lang.String',. Inverse: Xortype.
+    JClass Task -> http://b3mn.org/stencilset/bpmnq#Task
+      extends: Activity, org.ontoware.rdfreactor.schema.rdfs.Resource, Task, Node, 
+      comment: An atomic activity.
+      Loopcondition (-1/-1)  -> http://oryx-editor.org/loopcondition, types: 'java.lang.String',. Inverse: Loopcondition.
+      Loopcounter (-1/-1)  -> http://oryx-editor.org/loopcounter, types: 'java.lang.String',. Inverse: Loopcounter.
+      Loopmaximum (-1/-1)  -> http://oryx-editor.org/loopmaximum, types: 'java.lang.String',. Inverse: Loopmaximum.
+      Looptype (-1/-1)  -> http://oryx-editor.org/looptype, types: 'java.lang.String',. Inverse: Looptype.
+    JClass Activity -> http://b3mn.org/stencilset/bpmnq#Activity
+      extends: Node, org.ontoware.rdfreactor.schema.rdfs.Resource, Activity, 
+      comment: Abstract superclass of all activity-type nodes.
+      Activitytype (-1/-1)  -> http://oryx-editor.org/activitytype, types: 'java.lang.String',. Inverse: Activitytype.
+      Name (-1/-1)  -> http://oryx-editor.org/name, types: 'java.lang.String',. Inverse: Name.
+    JClass Sequenceflow -> http://b3mn.org/stencilset/bpmnq#SequenceFlow
+      extends: Edge, org.ontoware.rdfreactor.schema.rdfs.Resource, Sequenceflow, 
+      comment: 
+      Conditiontype (-1/-1)  -> http://oryx-editor.org/conditiontype, types: 'java.lang.String',. Inverse: Conditiontype.
+      Quantity (-1/-1)  -> http://oryx-editor.org/quantity, types: 'java.lang.String',. Inverse: Quantity.
+    JClass Edge -> http://b3mn.org/stencilset/bpmnq#Edge
+      extends: org.ontoware.rdfreactor.schema.rdfs.Resource, Edge, 
+      comment: Abstract class for all diagram edges. Used to hold general edge properties, such as source and target.
+      Categories (-1/-1)  -> http://oryx-editor.org/categories, types: 'java.lang.String',. Inverse: Categories.
+      Id (-1/-1)  -> http://oryx-editor.org/id, types: 'java.lang.String',. Inverse: Id.
+      Outgoing (-1/-1)  -> http://raziel.org/outgoing, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Outgoing.
+      Parent (-1/-1)  -> http://raziel.org/parent, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Parent.
+      Source (-1/-1)  -> http://oryx-editor.org/source, types: 'java.lang.String',. Inverse: Source.
+      Target (-1/-1)  -> http://oryx-editor.org/target, types: 'java.lang.String',. Inverse: Target.
+    JClass Startevent -> http://b3mn.org/stencilset/bpmnq#StartEvent
+      extends: Event, org.ontoware.rdfreactor.schema.rdfs.Resource, Startevent, Node, 
+      comment: An event without incoming edges.
+    JClass Event -> http://b3mn.org/stencilset/bpmnq#Event
+      extends: Node, org.ontoware.rdfreactor.schema.rdfs.Resource, Event, 
+      comment: Abstract superclass of all event nodes.
+      Eventtype (-1/-1)  -> http://oryx-editor.org/eventtype, types: 'java.lang.String',. Inverse: Eventtype.
+      Trigger (-1/-1)  -> http://oryx-editor.org/trigger, types: 'java.lang.String',. Inverse: Trigger.
+    JClass Gateway -> http://b3mn.org/stencilset/bpmnq#Gateway
+      extends: Node, org.ontoware.rdfreactor.schema.rdfs.Resource, Gateway, 
+      comment: Abstract superclass of all gateway nodes.
+      Gatewaytype (-1/-1)  -> http://oryx-editor.org/gatewaytype, types: 'java.lang.String',. Inverse: Gatewaytype.
+    JClass Node -> http://b3mn.org/stencilset/bpmnq#Node
+      extends: org.ontoware.rdfreactor.schema.rdfs.Resource, Node, 
+      comment: Abstract class for all diagram nodes. Used to hold general node properties.
+      Categories (-1/-1)  -> http://oryx-editor.org/categories, types: 'java.lang.String',. Inverse: Categories.
+      Id (-1/-1)  -> http://oryx-editor.org/id, types: 'java.lang.String',. Inverse: Id.
+      Outgoing (-1/-1)  -> http://raziel.org/outgoing, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Outgoing.
+      Parent (-1/-1)  -> http://raziel.org/parent, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Parent.
+    JClass Intermediateevent -> http://b3mn.org/stencilset/bpmnq#IntermediateEvent
+      extends: Event, org.ontoware.rdfreactor.schema.rdfs.Resource, Intermediateevent, Node, 
+      comment: An intermediate event with incoming and outgoing edges.
+    JClass Endevent -> http://b3mn.org/stencilset/bpmnq#EndEvent
+      extends: Event, org.ontoware.rdfreactor.schema.rdfs.Resource, Endevent, Node, 
+      comment: An event without outgoing edges.
+    JClass Genericjoin -> http://b3mn.org/stencilset/bpmnq#genericjoin
+      extends: Gateway, org.ontoware.rdfreactor.schema.rdfs.Resource, Genericjoin, Node, 
+      comment: Represents any join gateway.
+    JClass Canvas -> http://oryx-editor.org/canvas
+      extends: org.ontoware.rdfreactor.schema.rdfs.Resource, Canvas, 
+      comment: 
+      Mode (-1/-1)  -> http://oryx-editor.org/mode, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Mode.
+      Render (-1/-1)  -> http://oryx-editor.org/render, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Render.
+      Stencilset (-1/-1)  -> http://oryx-editor.org/stencilset, types: 'org.ontoware.rdfreactor.schema.rdfs.Resource',. Inverse: Stencilset.
+    JClass Genericshape -> http://b3mn.org/stencilset/bpmnq#generic
+      extends: Activity, Gateway, org.ontoware.rdfreactor.schema.rdfs.Resource, Genericshape, Node, 
+      comment: Matches any node type.
+    JClass Variableactivity -> http://b3mn.org/stencilset/bpmnq#VariableActivity
+      extends: Activity, org.ontoware.rdfreactor.schema.rdfs.Resource, Variableactivity, Node, 
+      comment: An variable activity. May be bound to different actual activities.
+    JClass NegativePath -> http://b3mn.org/stencilset/bpmnq#NegativePath
+      extends: Edge, org.ontoware.rdfreactor.schema.rdfs.Resource, NegativePath, 
+      comment: 
+    JClass Genericsplit -> http://b3mn.org/stencilset/bpmnq#genericsplit
+      extends: Gateway, org.ontoware.rdfreactor.schema.rdfs.Resource, Genericsplit, Node, 
+      comment: Represents any split gateway.
+    JClass Path -> http://b3mn.org/stencilset/bpmnq#Path
+      extends: Edge, org.ontoware.rdfreactor.schema.rdfs.Resource, Path, 
+      comment: An arbitrary path through a diagram, linking two nodes.
+      Exclude (-1/-1)  -> http://oryx-editor.org/exclude, types: 'java.lang.String',. Inverse: Exclude.
+      Name (-1/-1)  -> http://oryx-editor.org/name, types: 'java.lang.String',. Inverse: Name.
+      Temporalproperty (-1/-1)  -> http://oryx-editor.org/temporalproperty, types: 'java.lang.String',. Inverse: Temporalproperty.
+    JClass ANDGateway -> http://b3mn.org/stencilset/bpmnq#AND_Gateway
+      extends: Gateway, org.ontoware.rdfreactor.schema.rdfs.Resource, ANDGateway, Node, 
+      comment: A decision point.
+      Splitjoin (-1/-1)  -> http://oryx-editor.org/splitjoin, types: 'java.lang.String',. Inverse: Splitjoin.
+    JClass ORGateway -> http://b3mn.org/stencilset/bpmnq#OR_Gateway
+      extends: Gateway, org.ontoware.rdfreactor.schema.rdfs.Resource, ORGateway, Node, 
+      comment: A decision point.
+      Splitjoin (-1/-1)  -> http://oryx-editor.org/splitjoin, types: 'java.lang.String',. Inverse: Splitjoin.
+    JClass NegativeSequenceflow -> http://b3mn.org/stencilset/bpmnq#NegativeSequenceFlow
+      extends: Edge, org.ontoware.rdfreactor.schema.rdfs.Resource, NegativeSequenceflow, 
+      comment: 
+    JClass ExclusiveDatabasedGateway -> http://b3mn.org/stencilset/bpmnq#Exclusive_Databased_Gateway
+      extends: XORGateway, org.ontoware.rdfreactor.schema.rdfs.Resource, ExclusiveDatabasedGateway, Gateway, Node, 
+      comment: 
+    JClass DataObject -> http://b3mn.org/stencilset/bpmnq#DataObject
+      extends: Node, org.ontoware.rdfreactor.schema.rdfs.Resource, DataObject, 
+      comment: 
+      Name (-1/-1)  -> http://oryx-editor.org/name, types: 'java.lang.String',. Inverse: Name.
+      State (-1/-1)  -> http://oryx-editor.org/state, types: 'java.lang.String',. Inverse: State.
+    JClass Association -> http://b3mn.org/stencilset/bpmnq#Association
+      extends: Edge, org.ontoware.rdfreactor.schema.rdfs.Resource, Association, 
+      comment: 
+    JClass BidirectionalAssociation -> http://b3mn.org/stencilset/bpmnq#Association_Bidirectional
+      extends: Association, org.ontoware.rdfreactor.schema.rdfs.Resource, BidirectionalAssociation, Edge, 
+      comment: 
+    JClass UnidirectionalAssociation -> http://b3mn.org/stencilset/bpmnq#Association_Unidirectional
+      extends: Association, org.ontoware.rdfreactor.schema.rdfs.Resource, UnidirectionalAssociation, Edge, 
+      comment: 
+    JClass UndirectedAssociation -> http://b3mn.org/stencilset/bpmnq#Association_Undirected
+      extends: Association, org.ontoware.rdfreactor.schema.rdfs.Resource, UndirectedAssociation, Edge, 
+      comment: 
+    JClass BehavioralAssociation -> http://b3mn.org/stencilset/bpmnq#Association_Behavioral
+      extends: Association, org.ontoware.rdfreactor.schema.rdfs.Resource, BehavioralAssociation, Edge, 
+      comment: 
+    JClass Property -> http://www.w3.org/2000/01/rdf-schema#Property
+      extends: org.ontoware.rdfreactor.schema.rdfs.Resource, Property, 
+      comment: 

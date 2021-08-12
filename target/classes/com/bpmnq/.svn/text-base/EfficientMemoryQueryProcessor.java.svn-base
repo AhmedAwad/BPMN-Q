@@ -1,0 +1,186 @@
+package com.bpmnq;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.bpmnq.GraphObject.GraphObjectType;
+
+public final class EfficientMemoryQueryProcessor extends MemoryQueryProcessor
+{
+    private HashMap<GraphObject, List<GraphObject>> resolvedGateWaysMap;
+    public EfficientMemoryQueryProcessor(PrintWriter answer)
+    {
+	super(answer);
+	currentProcess = new ProcessGraph();
+	resolvedGateWaysMap = new HashMap<GraphObject, List<GraphObject>>();
+    }
+    @Override
+    protected void resolveGateWayNode(String modelID) 
+    {
+	log.trace("Begin Resolve Gateway Node ID");
+	if (this.intermediateRefinements.size() == 0) 
+	    return;
+
+	refreshModel(modelID);
+	
+	while (this.intermediateRefinements.size() > 0)
+	{
+//	    System.out.println("Intermediate query list size ="+intermediateRefinements.size());
+//	    System.out.println("Final query list size ="+finalRefinements.size());
+	    QueryGraph query = (QueryGraph)this.intermediateRefinements.remove(0);
+
+	    boolean queryHasBeenRefined = false;
+	    //ArrayList<ArrayList<QueryGraph>> refinedQueriesX = new ArrayList<ArrayList<QueryGraph>>();
+	    List<QueryGraph> refinedQueries = new ArrayList<QueryGraph>();
+	    
+	    QueryGraph refinement;
+	    GraphObject currentNode;
+
+	    List<GraphObject> resolvedGateways = new ArrayList<GraphObject>();
+
+	    int nodesSize = query.nodes.size();
+	    for (int nodeNum = 0; nodeNum < nodesSize; nodeNum++)
+	    {
+		currentNode = query.nodes.get(nodeNum);
+		if (currentNode.type != GraphObjectType.GATEWAY) 
+		    continue;
+		if (currentNode.isResolved()) 
+		    continue;
+		if (currentNode.type2.startsWith("GENERIC")) 
+		    continue;
+
+		queryHasBeenRefined = true;
+
+		// try to find a gateway in this process model, where either successor or predecessor 
+		// match a node in the query that has been resolved already 
+		for (GraphObject gateway : currentProcess.getGateways(currentNode.type2))
+		{
+		    boolean contradictsModel = false;
+		    if (query.forbiddenGatewayIDs.toString().contains(gateway.getID()))
+			continue;
+
+		    List<GraphObject> predsInQuery = query.getPredecessorsFromQueryGraph(currentNode);
+		    List<GraphObject> predsInModel = currentProcess.getPredecessorsFromGraph(gateway);
+
+		    for (GraphObject pre : predsInQuery)
+		    {
+			if (pre.isResolved() && !predsInModel.contains(pre))
+			{
+			    contradictsModel = true;
+			    break;
+			}
+		    }
+		    List<GraphObject> succsInQuery = query.getSuccessorsFromQueryGraph(currentNode);
+		    List<GraphObject> succsInModel = currentProcess.getSuccessorsFromGraph(gateway);
+		    if (!contradictsModel)
+		    {	
+			for (GraphObject suc : succsInQuery)
+
+			{
+			    if (suc.isResolved() && !succsInModel.contains(suc))
+			    {
+				contradictsModel = true;
+				break;
+			    }
+			}
+		    }
+		    // here we add more intilligent step
+		    // try to check all paths, neg paths, negative edges
+		    if (!contradictsModel)
+		    {
+			List<GraphObject> pathSuccessors = query.getPathSuccessorsFromQueryGraph(currentNode);
+			ProcessGraph path;
+			boolean unresovedNode=false, matchAll=false;
+			for (GraphObject suc : pathSuccessors)
+			{
+			    if (!suc.isResolved())
+			    {
+				unresovedNode = true;
+				break;
+			    }
+			    // Here we need to check for a path
+//			    path = findPath(gateway, suc, modelID, query.getPathExcludeStatement(currentNode, suc));
+//			    if (path.nodes.size() > 0)
+//			    {
+//				if (!resolvedGateWaysMap.keySet().contains(currentNode))
+//				{
+//				    resolvedGateWaysMap.put(currentNode, new ArrayList<GraphObject>());
+//				}
+//				resolvedGateWaysMap.get(currentNode).add(gateway);
+//				
+//			    }
+			    
+			}
+		    }
+		    if (!contradictsModel)
+			resolvedGateways.add(gateway);
+		}
+
+		for (GraphObject nd : resolvedGateways)
+		{
+		    // we have to create a refinement for each event id
+		    currentNode.setID(nd.getID());
+		    //currentNode.name = lrs.getString("name");
+		    refinement = (QueryGraph)query.clone();
+		    refinement.addInfoLog("GateWay " + currentNode.getName() + " was bound to gateway ID " + nd.getID());
+		    refinement.nodes.get(nodeNum).setID(nd.getID());
+		    refinement.nodes.get(nodeNum).setName(nd.getName());
+
+		    refinement.forbiddenGatewayIDs.append(", " + currentNode.getID());
+
+		    //query.nodes.get(i).id = lrs.getInt("id");
+		    // we have to update all paths, edges in which this node is incident
+		    refinement.updateEdgesWithDestination(currentNode,refinement.nodes.get(nodeNum).getName());
+		    refinement.updateEdgesWithSource(currentNode,refinement.nodes.get(nodeNum).getName());
+		    refinement.updatePathsWithDestination(currentNode,refinement.nodes.get(nodeNum).getName());
+		    refinement.updatePathsWithSource(currentNode,refinement.nodes.get(nodeNum).getName());
+
+//		    DO the same thing with negatives
+		    refinement.updateNegativeEdgesWithDestination(currentNode,refinement.nodes.get(nodeNum).getName());
+		    refinement.updateNegativeEdgesWithSource(currentNode,refinement.nodes.get(nodeNum).getName());
+		    refinement.updateNegativePathsWithDestination(currentNode,refinement.nodes.get(nodeNum).getName());
+		    refinement.updateNegativePathsWithSource(currentNode,refinement.nodes.get(nodeNum).getName());
+
+
+		    // added on 9th of July 2008 
+		    refinement.updateExcludeExpression(currentNode.getName(), currentNode.toString());
+
+		    refinement.updateUnDirectedAssociationPathSource(currentNode,refinement.nodes.get(nodeNum));
+		    refinement.updateUnDirectedAssociationPathDestination(currentNode,refinement.nodes.get(nodeNum));
+
+		    refinedQueries.add(refinement);
+		}
+		//for (int u =0; u < refinedQueries.size();u++)
+		if (refinedQueries.size()> 0)
+		{
+		    for (QueryGraph qg : refinedQueries)
+			if (!this.intermediateRefinements.contains(qg))
+			    this.intermediateRefinements.add(0, qg);
+		}
+		else
+		{
+		    // at any time an event fails to be resolved
+		    // the whole query is terminated with failure.
+		    log.error("GateWay "+ currentNode.getName() +" failed to find a binding");
+		    log.error("Terminating the query processing against model " + modelID + " due to unbound objects");
+		    this.intermediateRefinements.clear();
+		    this.finalRefinements.clear();
+		    return;
+		}
+
+		break;
+	    }
+	    // here we have a list of versions for each event node
+	    // we have to have the cartesian product
+	    // the order is inherint in the order of lists of refined queries
+
+	    if (!queryHasBeenRefined && !this.finalRefinements.contains(query))
+		this.finalRefinements.add(query);
+
+	}//;
+    }
+
+}

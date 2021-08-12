@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:gss="http://www.w3.org/2001/11/IsaViz/graphstylesheets#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:oryx="http://oryx-editor.org/"
+    xmlns:bpmnq="http://b3mn.org/stencilset/bpmnq#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:raziel="http://raziel.org/"
+  xml:base="file:/home/sryll/container/HPI/Master-Arbeit/bpmn-q/bpmnq-processor/src/schema/bpmnq-schema.rdf">
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Exclusive_Eventbased_Gateway">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#XOR_Gateway"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Task">
+    <rdfs:comment xml:lang="en">An atomic activity.</rdfs:comment>
+    <rdfs:label xml:lang="en">Task</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Activity"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#SequenceFlow">
+    <rdfs:label xml:lang="en">Sequence flow</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#StartEvent">
+    <rdfs:comment xml:lang="en">An event without incoming edges.</rdfs:comment>
+    <rdfs:label xml:lang="en">Start event</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Event"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Gateway">
+    <rdfs:comment xml:lang="en">Abstract superclass of all gateway nodes.</rdfs:comment>
+    <rdfs:label xml:lang="en">Gateway</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Node"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#IntermediateEvent">
+    <rdfs:comment xml:lang="en">An intermediate event with incoming and outgoing edges.</rdfs:comment>
+    <rdfs:label xml:lang="en">Intermediate event</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Event"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#XOR_Gateway">
+    <rdfs:comment xml:lang="en">Abstract superclass for data-based and event-based XOR gateway</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#EndEvent">
+    <rdfs:comment xml:lang="en">An event without outgoing edges.</rdfs:comment>
+    <rdfs:label xml:lang="en">End event</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Event"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#genericjoin">
+    <rdfs:comment xml:lang="en">Represents any join gateway.</rdfs:comment>
+    <rdfs:label xml:lang="en">Generic join</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://oryx-editor.org/canvas"/>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#generic">
+    <rdfs:comment xml:lang="en">Matches any node type.</rdfs:comment>
+    <rdfs:label xml:lang="en">Generic shape</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Activity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#VariableActivity">
+    <rdfs:comment xml:lang="en">An variable activity. May be bound to different actual activities.</rdfs:comment>
+    <rdfs:label xml:lang="en">Variable activity</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Activity"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Node">
+    <rdfs:comment xml:lang="en">Abstract class for all diagram nodes. Used to hold general node properties.</rdfs:comment>
+    <rdfs:label xml:lang="en">Node</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#NegativePath">
+    <rdfs:label xml:lang="en">Negative Path</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Edge">
+    <rdfs:comment xml:lang="en">Abstract class for all diagram edges. Used to hold general edge properties, such as source and target.</rdfs:comment>
+    <rdfs:label xml:lang="en">Edge</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#genericsplit">
+    <rdfs:comment xml:lang="en">Represents any split gateway.</rdfs:comment>
+    <rdfs:label xml:lang="en">Generic split</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Path">
+    <rdfs:comment xml:lang="en">An arbitrary path through a diagram, linking two nodes.</rdfs:comment>
+    <rdfs:label xml:lang="en">Path</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Event">
+    <rdfs:comment xml:lang="en">Abstract superclass of all event nodes.</rdfs:comment>
+    <rdfs:label xml:lang="en">Event</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#AND_Gateway">
+    <rdfs:comment xml:lang="en">A decision point.</rdfs:comment>
+    <rdfs:label xml:lang="en">AND Gateway</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#OR_Gateway">
+    <rdfs:comment xml:lang="en">A decision point.</rdfs:comment>
+    <rdfs:label xml:lang="en">OR Gateway</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#NegativeSequenceFlow">
+    <rdfs:label xml:lang="en">Negative Sequence flow</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Exclusive_Databased_Gateway">
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#XOR_Gateway"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Activity">
+    <rdfs:comment xml:lang="en">Abstract superclass of all activity-type nodes.</rdfs:comment>
+    <rdfs:label xml:lang="en">Activity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#DataObject">
+      <rdfs:label xml:lang="en">Data Object</rdfs:label>
+      <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Association">
+      <rdfs:subClassOf>
+        <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Edge"/>
+      </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Association_Bidirectional">
+      <rdfs:label xml:lang="en">Bidirectional Association</rdfs:label>
+      <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Association"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Association_Unidirectional">
+      <rdfs:label xml:lang="en">Unidirectional Association</rdfs:label>
+      <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Association"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Association_Undirected">
+      <rdfs:label xml:lang="en">Undirected Association</rdfs:label>
+      <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Association"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://b3mn.org/stencilset/bpmnq#Association_Behavioral">
+        <rdfs:label xml:lang="en">Behavioral Association</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://b3mn.org/stencilset/bpmnq#Association"/>
+  </rdfs:Class>
+  <rdfs:Property rdf:about="http://oryx-editor.org/eventtype">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Event"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/conditiontype">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#SequenceFlow"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/stencilset">
+    <rdfs:domain rdf:resource="http://oryx-editor.org/canvas"/>
+    <rdfs:comment xml:lang="en">Pointer to the stencilset definition (JSON file)</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/trigger">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Event"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://raziel.org/parent">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/gatewaytype">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Gateway"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/activitytype">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Activity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/exclude">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Path"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/xortype">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#XOR_Gateway"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/loopmaximum">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Task"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/looptype">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Task"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/loopcounter">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Task"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/mode">
+    <rdfs:domain rdf:resource="http://oryx-editor.org/canvas"/>
+    <rdfs:comment xml:lang="en">Display mode options</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/render">
+    <rdfs:domain rdf:resource="http://oryx-editor.org/canvas"/>
+    <rdfs:comment xml:lang="en">Diagram elements included in this element.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/name">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Activity"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Path"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#DataObject"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/type">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    <rdfs:comment xml:lang="en">Identifies the diagram element type.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://oryx-editor.org/"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/source">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/temporalproperty">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Path"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/splitjoin">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#OR_Gateway"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#AND_Gateway"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#XOR_Gateway"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/id">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/categories">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://raziel.org/outgoing">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Node"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/target">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Edge"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/loopcondition">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#Task"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/quantity">
+    <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#SequenceFlow"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+  <rdfs:Property rdf:about="http://oryx-editor.org/state">
+      <rdfs:domain rdf:resource="http://b3mn.org/stencilset/bpmnq#DataObject"/>
+      <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdfs:Property>
+</rdf:RDF>

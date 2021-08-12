@@ -1,0 +1,8 @@
+#Thu Aug 28 17:23:52 CEST 2008
+activeProfiles=
+eclipse.preferences.version=1
+fullBuildGoals=process-test-resources generate-sources
+includeModules=false
+resolveWorkspaceProjects=true
+resourceFilterGoals=process-resources resources\:testResources generate-sources
+version=1

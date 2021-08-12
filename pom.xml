@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bpmnq</groupId>
+  <artifactId>bpmnq</artifactId>
+  <name>BPMN-Q</name>
+  <version>1.0.3-SNAPSHOT</version>
+  <description>BPMN-Q query processor implementation</description>
+  <!--url>http://myhpi.de/~sryll/maven-repo/bpmnq/</url-->
+  
+  <pluginRepositories>
+	  <pluginRepository>
+	    <id>sryll-plugins</id>
+	    <name>Steffen Ryll's own small Maven repository</name>
+	    <url>http://myhpi.de/~sryll/maven-repo/</url>
+	    <snapshots>
+	       <enabled>true</enabled>
+	     </snapshots>
+	  </pluginRepository>
+  </pluginRepositories>
+  
+  <developers>
+  	<developer>
+  		<name>Ahmed Awad</name>
+  		<email>Ahmed.Awad@hpi.uni-potsdam.de</email>
+  		<organization>Hasso-Plattner-Institut fuer Softwaresystemtechnik gGmbH (HPI)</organization>
+  		<organizationUrl>http://www.hpi-web.de</organizationUrl>
+  		<timezone>UTC+1</timezone>
+  	</developer>
+  </developers>
+  <contributors>
+  	<contributor>
+  		<name>Steffen Ryll</name>
+  		<email>steffen.ryll@student.hpi.uni-potsdam.de</email>
+  		<timezone>UTC+1</timezone>
+  	</contributor>
+  </contributors>
+  <scm>
+  	<connection>scm:svn:svn://svn.hpi.uni-potsdam.de/bpmnq-source-code</connection>
+  	<developerConnection>scm:svn:svn+ssh://bpmnq-source-code@svn.hpi.uni-potsdam.de/svn/trunk  </developerConnection>
+  </scm>
+
+  
+  <build>
+  	<plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>6</source>
+          <target>6</target>
+        </configuration>
+      </plugin>
+
+	  <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>cobertura-maven-plugin</artifactId>
+		<executions>
+			<execution>
+				<goals>
+					<goal>clean</goal>
+				</goals>
+			</execution>
+		</executions>
+ 	  </plugin>
+ 	  
+ 	  <plugin>
+ 	  	<groupId>org.semweb4j</groupId>
+ 	  	<artifactId>maven-rdfreactor-plugin</artifactId>
+		<executions>
+ 	  		<execution>
+ 	  			<id>bpmn-schema</id>
+ 	  			<goals>
+ 	  				<goal>rdfs-classes</goal>
+ 	  			</goals>
+				<!-- Generate sources for parsing BPMN models from Oryx -->
+		        <configuration>
+ 	  				<schemaFile>src/main/resources/bpmn-schema.rdf</schemaFile>
+ 	  				<packageName>de.hpi.bpmn.rdf</packageName>
+ 	  				<methodPrefix>Bpmn</methodPrefix>
+ 	  			</configuration>
+ 	  		</execution>
+ 	  		
+			<execution>
+ 	  			<id>bpmnq-schema</id>
+ 	  			<goals>
+ 	  				<goal>rdfs-classes</goal>
+ 	  			</goals>
+				<!-- Generate sources for parsing BPMN-Q queries from Oryx -->
+				<configuration>
+ 	  				<schemaFile>src/main/resources/bpmnq-schema.rdf</schemaFile>
+ 	  				<packageName>com.bpmnq.rdf</packageName>
+ 	  				<methodPrefix>Bpmnq</methodPrefix>
+ 	  			</configuration>
+ 	  		</execution>
+ 	  	</executions>
+ 	  </plugin>
+
+	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+<!-- When uncommented, invoking mvn package creates a shaded jar, i.e. all 
+	dependencies are packaged together. -->
+		<executions>
+			<execution>
+	            <phase>package</phase>
+	            <goals>
+	              <goal>shade</goal>
+	            </goals>
+				
+				<configuration>
+	              <artifactSet>
+	                <excludes>
+	                  <exclude>junit:junit</exclude>
+					  <exclude>stax:stax-api</exclude>
+	                </excludes>
+	              </artifactSet>
+	              <transformers>
+	                <transformer implementation="org.apache.maven.plugins.shade.resource.ComponentsXmlResourceTransformer"/>
+	              </transformers>
+	            </configuration>
+			</execution>
+		</executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <archive>
+          	<manifest>
+          	  <mainClass>com.bpmnq.BPMNQ</mainClass>
+              <packageName>com.bpmnq</packageName>
+			</manifest>
+            <manifestEntries>
+              <mode>development</mode>
+              <!-- <url>${pom.url}</url> -->
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>[4.3,)</version>
+	  <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.semweb4j</groupId>
+      <artifactId>rdfreactor.runtime</artifactId>
+      <version>4.7.0</version>
+    </dependency>
+	<dependency>
+		<groupId>postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<version>8.3-603.jdbc4</version>
+	</dependency>
+	<dependency>
+		<groupId>de.hpi.themis</groupId>
+  		<artifactId>themis</artifactId>
+  		<version>0.1.0</version>
+	</dependency>
+	<dependency>
+      <groupId>org.semweb4j</groupId>
+      <artifactId>rdf2go.impl.jena24</artifactId>
+      <version>4.7.0</version>
+	  <scope>runtime</scope>
+    </dependency>
+	<dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.14</version>
+    </dependency>
+  </dependencies>
+  
+	<repositories>
+		<repository>
+			<id>theoretiker-repo</id>
+			<name>Semweb4j.org maven repo</name>
+			<url>http://semweb4j.org/repo</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		
+		<repository>
+			<id>sryll-myhpi</id>
+			<name>Steffen Ryll's own small Maven repository</name>
+			<url>http://myhpi.de/~sryll/maven-repo</url>
+		</repository>
+		
+	</repositories>
+	
+	<distributionManagement>
+	    <repository>
+	    	<id>sryll-myhpi-upload</id>
+			<name></name>
+			<url>sftp://placebo.hpi.uni-potsdam.de/home/stud/s/sryll/public_html/maven-repo/</url>
+		</repository>
+		<site>
+	      <id>sryll-myhpi-upload</id>
+	      <url>sftp://placebo.hpi.uni-potsdam.de/home/stud/s/sryll/public_html/maven-repo/bpmnq</url>
+	    </site>
+  	</distributionManagement>
+
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+
+</project>

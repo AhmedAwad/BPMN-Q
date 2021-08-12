@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+
+	<appender name="FILE" class="org.apache.log4j.FileAppender">
+		<param name="file" value="bpmnq.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-4r %-5p %c:%L %x - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.SimpleLayout" />
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="info" />
+			<param name="LevelMax" value="fatal" />
+		</filter>
+
+	</appender>
+	
+	<logger name="org.ontoware.rdf2go">
+		<level value="error" />
+	</logger>
+	
+	<logger name="com.bpmnq">
+		<appender-ref ref="console" />
+	</logger>
+
+	<root>
+		<priority value="trace" />
+		<appender-ref ref="FILE"/>
+	</root>
+
+	
+</log4j:configuration>
